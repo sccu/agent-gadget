@@ -1,0 +1,2 @@
+[console_scripts]
+gadget = gadget.cli:main

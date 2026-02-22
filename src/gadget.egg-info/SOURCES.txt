@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+src/gadget/__init__.py
+src/gadget/cli.py
+src/gadget.egg-info/PKG-INFO
+src/gadget.egg-info/SOURCES.txt
+src/gadget.egg-info/dependency_links.txt
+src/gadget.egg-info/entry_points.txt
+src/gadget.egg-info/top_level.txt

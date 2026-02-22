@@ -1,0 +1,26 @@
+Metadata-Version: 2.4
+Name: gadget
+Version: 0.1.0
+Summary: A basic gadget project
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+
+# Gadget
+
+A basic Python project using `pyproject.toml`.
+
+## Installation
+
+To install the CLI in editable mode for development:
+
+```bash
+pip install -e .
+```
+
+## Usage
+
+After installation, you can run the CLI tool:
+
+```bash
+gadget init
+```
