@@ -20,7 +20,7 @@ Review code/PRs to identify bugs, security flaws, performance bottlenecks, and d
    - **Maintainability**: Naming, complexity, Clean Architecture, comments.
    - **Testing & QA**: Missing test cases, unhandled edge cases.
 3. **Artifact Output (CRITICAL)**: 
-   - Write actionable suggestions and review results to an artifact via `write_to_file` (e.g., `artifacts/<conversation-id>/review_results.md`).
+   - Write actionable suggestions and review results to an artifact via `write_to_file` (e.g., `brain/<conversation-id>/review_results.md`).
    - Do NOT generate full refactored code files directly. The main agent (antigravity) will read your artifact and execute refactoring.
 4. **Praise**: Highlight at least one piece of well-written code.
 
