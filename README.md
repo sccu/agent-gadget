@@ -34,7 +34,6 @@ pip install -e ".[dev]"
 > ```
 
 ### Basic Usage
-
 After installation, you can run the initialization command to set up the agent environment:
 
 ```bash
