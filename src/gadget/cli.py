@@ -66,7 +66,7 @@ def init_command(target_dir: str, force: bool = False) -> None:
     Handles the 'init' command to perform installation tasks.
     """
     print(f"Initializing gadget in '{target_dir}'...")
-    base_src_dir = os.path.dirname(os.path.dirname(__file__))
+    base_src_dir = os.path.dirname(__file__)
     base_target_dir = os.path.join(target_dir, ".agents")
     
     directories_to_install = ["skills", "workflows"]

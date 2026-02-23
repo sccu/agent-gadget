@@ -18,3 +18,9 @@ dev = [
     "pytest",
     "pre-commit"
 ]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["**/*.md", "**/*.yaml", "**/*.txt"]
