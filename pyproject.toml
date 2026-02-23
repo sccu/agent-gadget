@@ -12,3 +12,9 @@ dependencies = []
 
 [project.scripts]
 gadget = "gadget.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pre-commit"
+]
