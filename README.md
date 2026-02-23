@@ -25,8 +25,13 @@ This project is built as a configurable Python project using `pyproject.toml`.
 To install the CLI in editable mode for development:
 
 ```bash
-pip install -e .
+pip install -e ".[dev]"
 ```
+
+> **Note:** If the installation hangs or takes unusually long, it might be due to a system keyring issue (e.g., on macOS). You can bypass the keyring block by running:
+> ```bash
+> PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring pip install -e ".[dev]"
+> ```
 
 ### Basic Usage
 
