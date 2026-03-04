@@ -37,5 +37,3 @@ Workflows are invoked with `/<workflow-name>`. Each workflow lives under `.agent
 **Agent interactions**:
 - Invokes `@research` to deeply analyze the issue and codebase context before any implementation begins. The output (`research_report.md`) is the basis for the implementation plan.
 - Invokes `@review` after implementation to assess code quality. The output (`review_report.md`) drives iterative refinement until quality standards are met.
-
-For the step-by-step execution details, refer to `.agents/workflows/handle-issue.md`.
