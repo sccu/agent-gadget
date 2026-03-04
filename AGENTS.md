@@ -10,7 +10,7 @@ Skills are invoked with `@<skill-name>`. Each skill lives under `.agents/skills/
 
 | Skill | Trigger | Purpose |
 |-------|---------|---------|
-| `issue` | `@issue <prompt>` | Generates a GitHub Issue via `gh` CLI |
+| `gh-issue` | `@gh-issue <prompt>` | Generates a GitHub Issue via `gh` CLI |
 | `research` | `@research` | Deep codebase analysis; outputs `research_report.md` artifact |
 | `review` | `@review` | Code review & QA; outputs `review_report.md` artifact |
 | `audit` | `@audit` | Compares docs vs. code; outputs `audit_report.md` artifact |
@@ -21,6 +21,7 @@ Skills are invoked with `@<skill-name>`. Each skill lives under `.agents/skills/
 1. Every skill must have a `SKILL.md` with YAML frontmatter (`name`, `description`, `version`, `author`, `category`, `tags`).
 2. A skill must **not** perform actions outside its stated role (e.g., `review` must not modify code).
 3. Skills that produce reports must write them as **artifacts**, not as chat messages.
+4. **Language Policy**: Skill/Agent definitions must be in **English**. However, primary artifacts (e.g., issues, research/design/review reports) must be in **Korean**.
 
 ## Workflows
 

@@ -23,6 +23,7 @@ Follow these instructions exactly:
 
 2. **Generate a Persistent Research Artifact**
    - Create a markdown file named **research_report.md**.
+   - **Language**: This artifact MUST be written in **Korean**.
    - Include:
      - Section headers for big logical units
      - Detailed descriptions of functionality and behavior

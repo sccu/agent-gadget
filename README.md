@@ -47,7 +47,7 @@ gadget init
 This project leverages agentic capabilities for automated development workflows. 
 
 ### 1. Issue Creation
-**Trigger:** `@issue <user_prompt>`
+**Trigger:** `@gh-issue <user_prompt>`
 
 Use this command to generate a new GitHub issue. The agent will read your prompt and the project context, ask any necessary clarifying questions, and scaffold a professional GitHub issue for you.
 Issues should maintain a single `status:` label to reflect their lifecycle state (`status: draft`, `status: confirmed`, `status: in-progress`).

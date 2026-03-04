@@ -22,6 +22,7 @@ Follow these instructions exactly:
 
 2. **Generate a Detailed Design Artifact**
    - Create a markdown file named **design_report.md**.
+   - **Language**: This artifact MUST be written in **Korean**.
    - Include:
      - **Architecture Overview**: How the new changes fit into the existing system.
      - **Component Design**: Detailed descriptions of new or modified components (e.g., class structures, function signatures, data models).
