@@ -33,6 +33,7 @@ Workflows are invoked with `/<workflow-name>`. Each workflow lives under `.agent
 ### Workflow: `handle-issue`
 
 **Role**: Automates the full development lifecycle for a GitHub issue — from branch creation to merge — with minimal human intervention.
+- The workflow starts by validating that the target issue has the `status: confirmed` label and does not have the `status: in-progress` label.
 
 **Agent interactions**:
 - Invokes `@research` to deeply analyze the issue and codebase context before any implementation begins. The output (`research_report.md`) is the basis for the implementation plan.
