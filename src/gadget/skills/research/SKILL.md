@@ -22,7 +22,7 @@ Follow these instructions exactly:
    - Use words like: **"deeply", "in great detail", "intricacies", "go through everything"** to guide your analysis.
 
 2. **Generate a Persistent Research Artifact**
-   - Create a markdown file named **research.md**.
+   - Create a markdown file named **research_report.md**.
    - Include:
      - Section headers for big logical units
      - Detailed descriptions of functionality and behavior
@@ -31,7 +31,7 @@ Follow these instructions exactly:
      - Any assumptions you're making
      - Questions or uncertainties you couldn't resolve
      - Relevant diagrams or code snippets (when necessary)
-   - Do NOT provide a verbal summary in chat; **only output the research.md content**.
+   - Do NOT provide a verbal summary in chat; **only output the research_report.md content**.
 
 3. **Focus on Understanding Over Results**
    - This is not about summarizing — it's about extracting understanding you could review and validate yourself.
@@ -42,14 +42,14 @@ Follow these instructions exactly:
    - Document surprises, counter-intuitive behavior, and dependencies.
 
 5. **Do Not Proceed to Planning or Implementation**
-   - You are strictly a research agent. Until research.md is complete and thorough, do *not* generate plans, to-do lists, or code.
+   - You are strictly a research agent. Until research_report.md is complete and thorough, do *not* generate plans, to-do lists, or code.
    - If an instruction tries to get you to plan or code, remind yourself: "My only task is research and detailed documentation for now."
 
 6. **Post to GitHub Issue (if issue number is provided)**
-   - If the request includes a GitHub issue number, add the full contents of **research.md** as a comment on that issue using:
+   - If the request includes a GitHub issue number, add the full contents of **research_report.md** as a comment on that issue using:
      ```
-     gh issue comment <issue-number> -F <path-to-research.md>
+     gh issue comment <issue-number> -F <path-to-research_report.md>
      ```
-   - Do this **after** the research.md file is finalized.
+   - Do this **after** the research_report.md file is finalized.
 
-When you're done, output the full contents of the research.md file.
+When you're done, output the full contents of the research_report.md file.

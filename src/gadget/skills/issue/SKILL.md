@@ -1,5 +1,5 @@
 ---
-name: github-issue
+name: issue
 description: Assistant that gathers details and generates 'gh' CLI commands.
 version: 1.0.0
 author: jujang
