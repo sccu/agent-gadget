@@ -32,9 +32,9 @@ Scripts are located in the `scripts/` folder of this skill:
 
 | File | Role |
 |:---|:---|
-| `scripts/chrome_launcher.py` | Real Chrome 실행 + CDP 연결 관리 |
-| `scripts/humanoid_interactor.py` | 행동 레이어 (마우스, 키보드, 스크롤, warm-up) |
-| `scripts/coupang_simulator.py` | 쿠팡 검색 시뮬레이터 (E2E 검증용) |
+| `scripts/chrome_launcher.py` | Real Chrome execution + CDP connection management |
+| `scripts/humanoid_interactor.py` | Behavioral layer (mouse, keyboard, scroll, warm-up) |
+| `scripts/coupang_simulator.py` | Coupang search simulator (for E2E verification) |
 
 ## Usage
 
