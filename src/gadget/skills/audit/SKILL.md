@@ -96,4 +96,4 @@ The `audit_report.md` artifact must use this structure:
 - **Exhaustive**: Every verifiable claim in the documents must appear in the checklist. Do not skip items.
 - **Evidence-based**: Cite exact file paths and line numbers. No vague references.
 - **Neutral tone**: State facts. Do not editorialize or assign blame.
-- **Use the language the user requested in.**
+- **Language**: The report (`audit_report.md`) MUST be written in **Korean**.
