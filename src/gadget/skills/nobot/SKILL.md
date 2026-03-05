@@ -10,8 +10,8 @@ tags: [browser, bot-evasion, automation, human-like, cdp]
 # Nobot — Human-like Browser Automation Skill
 
 ## Overview
-Real Chrome을 CDP로 제어하여 봇 탐지(Akamai Bot Manager 등)를 우회하는 스킬.
-Playwright bundled Chromium이 아닌 시스템 Chrome을 `--remote-debugging-port`로 실행하고 `connect_over_cdp()`로 연결하여 TLS/헤더 핑거프린트를 소비자 Chrome과 동일하게 유지한다.
+A skill that controls Real Chrome via CDP to bypass bot detection (e.g., Akamai Bot Manager).
+Runs the system Chrome with `--remote-debugging-port` instead of Playwright's bundled Chromium, and connects via `connect_over_cdp()` to maintain TLS/header fingerprints identical to consumer Chrome.
 
 ## Architecture
 
@@ -28,7 +28,7 @@ ChromeLauncher (scripts/chrome_launcher.py)
 
 ## Scripts
 
-스크립트는 이 스킬의 `scripts/` 폴더에 위치:
+Scripts are located in the `scripts/` folder of this skill:
 
 | File | Role |
 |:---|:---|
@@ -38,13 +38,13 @@ ChromeLauncher (scripts/chrome_launcher.py)
 
 ## Usage
 
-### 쿠팡 검색 시뮬레이터 실행
+### Running the Coupang Search Simulator
 ```bash
 python -u .agents/skills/nobot/scripts/coupang_simulator.py
 ```
-"roborock" (영어) → "로보락" (한글) 순서로 검색 후 결과 검증.
+Searches first in English ("roborock") then in Korean ("로보락") and validates results.
 
-### Python에서 직접 사용
+### Direct Usage in Python
 ```python
 import asyncio, sys, os
 # Add scripts directory to path
@@ -95,14 +95,14 @@ async def search_coupang(query: str):
 
 ## Key Principles
 
-1. **Real Chrome First** — 핑거프린트를 코드로 해결하지 않음. 실제 Chrome이 요청 생성.
-2. **No `--enable-automation`** — CDP 연결 시 자동화 플래그 제외. `navigator.webdriver = false`.
-3. **Warm-Up Required** — 검색 전 반드시 마우스/스크롤 이벤트 생성 (Sensor Script 대응).
-4. **Korean Input** — ASCII는 `keyboard.down/up`, 한글은 `keyboard.type()` 사용.
+1. **Real Chrome First** — Fingerprinting is not solved in code; Real Chrome generates the actual requests.
+2. **No `--enable-automation`** — Automation flag is excluded from CDP connections. `navigator.webdriver = false`.
+3. **Warm-Up Required** — Mouse/scroll events must be generated before searching (to feed the Sensor Script).
+4. **Korean Input** — Use `keyboard.down/up` for ASCII characters and `keyboard.type()` for Korean/CJK.
 
 ## Extending to Other Sites
 
-새 사이트 추가 시:
-1. 해당 사이트의 검색 input/button 셀렉터 파악
-2. 결과 추출 JS 작성 (product item 셀렉터, 타이틀/가격/광고 추출)
-3. `scripts/coupang_simulator.py`를 참고하여 새 시뮬레이터 작성
+To add a new site:
+1. Identify the search input/button selectors for the target site.
+2. Write JS for result extraction (product item selector, title/price/ad extraction).
+3. Use `scripts/coupang_simulator.py` as a reference to write a new simulator.
