@@ -61,6 +61,28 @@ def install_items(src_dir: str, target_dir: str, force: bool, item_type: str) ->
         print(f"Error: Failed to copy {item_type}: {e}")
         sys.exit(1)
 
+def install_file(src_path: str, target_dir: str, file_name: str, force: bool) -> None:
+    """단일 파일 설치 로직"""
+    if not os.path.exists(src_path):
+        print(f"Warning: Source file not found at {src_path}. Skipping...")
+        return
+
+    tgt_path = os.path.join(target_dir, file_name)
+    if os.path.exists(tgt_path):
+        if not force:
+            print(f"Skipping {file_name} as it already exists. Use -f or --force to overwrite.")
+            return
+        print(f"Force option provided. Overwriting existing {file_name}...")
+
+    try:
+        # 파일이 설치될 디렉토리가 없다면 생성
+        os.makedirs(os.path.dirname(tgt_path) or '.', exist_ok=True)
+        shutil.copy2(src_path, tgt_path)
+        print(f"Successfully installed file: {file_name}")
+    except Exception as e:
+        print(f"Error: Failed to copy {file_name}: {e}")
+        sys.exit(1)
+
 def init_command(target_dir: str, force: bool = False) -> None:
     """
     Handles the 'init' command to perform installation tasks.
@@ -75,6 +97,11 @@ def init_command(target_dir: str, force: bool = False) -> None:
         src_dir = os.path.join(base_src_dir, dir_name)
         tgt_dir = os.path.join(base_target_dir, dir_name)
         install_items(src_dir, tgt_dir, force, dir_name)
+        
+    files_to_install = ["GROUND_RULES.md", "AGENTS.md"]
+    for file_name in files_to_install:
+        src_path = os.path.join(base_src_dir, file_name)
+        install_file(src_path, target_dir, file_name, force)
         
     print("Installation complete.")
 
