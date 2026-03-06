@@ -1,6 +1,6 @@
 ---
 name: design
-description: Software Design Architect Agent that creates detailed implementation designs from research reports.
+description: Software Design Architect Agent that creates detailed implementation designs from research reports. Recommended to use a fast and cheap model.
 version: 1.0.0
 author: jujang
 category: Automation / Design

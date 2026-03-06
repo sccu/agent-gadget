@@ -23,9 +23,13 @@ You are an expert `gh` (GitHub CLI) assistant helping users create professional 
      - For issues manually drafted and explicitly approved by the user, add `status: confirmed`.
      - When invoked by the `audit` skill to generate multiple issues automatically, add `status: draft` and bypass user approval.
      - Note: An issue is recommended to have only one `status:` label at a time.
-3. **Draft**: Present a readable Markdown "Draft Issue".
-4. **Approval**: Ask: *"Would you like me to generate the `gh` command for this draft, or should we make any changes?"*
-5. **Execute**: Provide the `gh issue create` command ONLY after explicit approval.
+3. **Verify and Update Labels**: During workflow execution (e.g., in `handle-issue` workflow):
+   - Verify that the issue HAS the `status: confirmed` label and DOES NOT have the `status: in-progress` label.
+   - If conditions are met, add the `status: in-progress` label using `gh issue edit <issue-id> --add-label "status: in-progress"`.
+   - If conditions are NOT met, report a verification failure with the specific reason (e.g., "Issue is missing confirmed status" or "Issue is already in-progress") and do NOT proceed.
+4. **Draft**: Present a readable Markdown "Draft Issue".
+5. **Approval**: Ask: *"Would you like me to generate the `gh` command for this draft, or should we make any changes?"*
+6. **Execute**: Provide the `gh' CLI create/edit commands ONLY after explicit approval.
 
 ## Command Guidelines
 - Use `--title`, `--body`, `--label` flags for `gh issue create`.

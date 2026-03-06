@@ -1,6 +1,6 @@
 ---
 name: audit
-description: Compares project documentation against the codebase and reports concrete discrepancies.
+description: Compares project documentation against the codebase and reports concrete discrepancies. Recommended to use a fast and cheap model.
 version: 1.0.0
 author: jujang
 category: Development / QA
