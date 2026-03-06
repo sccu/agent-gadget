@@ -7,7 +7,7 @@ description: Automatically handles a GitHub issue from branch creation to implem
 3. Determine an appropriate branch name containing the issue identifier (e.g., `issue-<id>-brief-description`).
 4. Support independent code development by creating a new worktree and branch based on the remote main branch, and change into the new directory to isolate your work: `git fetch origin main && git worktree add .worktrees/<branch-name> -b <branch-name> origin/main && cd .worktrees/<branch-name>`.
 5. If necessary, invoke the `@research` skill to deeply analyze the issue details and the project context. It is highly recommended to invoke this skill if previous attempts have failed, or if there is insufficient information in the codebase and documentation to fulfill the request.
-6. Invoke the `@design` skill. The true agent will read the `research_report.md` artifact (if available), the entire codebase, project documentation, and user guidelines/rules. It will create a detailed design architecture, saving it as a `design_report.md` artifact without writing actual implementation code.
+6. Invoke the `@design` skill. The true agent will read the `research_report.md` artifact (if available), the related codebase, project documentation, and user guidelines/rules. It will create a detailed design architecture, saving it as a `design_report.md` artifact without writing actual implementation code.
 7. Based on the `research_report.md` (if available) and `design_report.md` artifacts, and the issue content, write a detailed implementation plan in **Korean**.
 8. Implement the code changes exactly according to the plan created in the previous step.
 9. Once your implementation is ready, invoke the `@review` skill to analyze your changes.
