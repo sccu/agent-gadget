@@ -7,7 +7,12 @@ if [ -z "$1" ]; then
 fi
 
 ISSUE_ID=$1
-BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+BRANCH_NAME=$(git branch --show-current)
+
+if [ -z "$BRANCH_NAME" ]; then
+  echo "Error: Not currently on any branch. Are you in a detached HEAD state?"
+  exit 1
+fi
 
 echo "Pushing branch ${BRANCH_NAME}..."
 git push -u origin HEAD

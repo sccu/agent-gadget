@@ -14,7 +14,8 @@ agent-gadget/
 ├── README.md                # Getting started & usage overview
 ├── pyproject.toml           # Build config, dependencies, CLI entry point
 ├── docs/                    # Detailed documentation
-│   └── architecture.md      # (this file)
+│   ├── architecture.md      # (this file)
+│   └── kb/                  # Knowledge Base for troubleshooting and tips
 ├── src/gadget/
 │   ├── __init__.py
 │   ├── cli.py               # CLI entry point (`gadget init`)

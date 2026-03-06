@@ -23,6 +23,21 @@ Skills are invoked with `@<skill-name>`. Each skill lives under `.agents/skills/
 3. Skills that produce reports must write them as **artifacts**, not as chat messages.
 4. **Language Policy**: Skill/Agent definitions must be in **English**. However, primary artifacts (e.g., issues, research/design/review reports) must be in **Korean**.
 
+## Knowledge Base
+
+Agents should consult the **Knowledge Base** (`docs/kb/`) when performing tasks that require technical context or troubleshooting.
+- **Location:** `docs/kb/`
+- **Purpose:** Stores technical documentation, best practices, and troubleshooting tips (e.g. Git workflows, language patterns).
+- **Responsibility:** If an agent discovers a new pattern or resolves a complex issue, they should document it as a new markdown file in `docs/kb/`.
+- **Formatting:** Every knowledge base document MUST start with a YAML frontmatter block containing `title`, `description`, and `tags`.
+  ```yaml
+  ---
+  title: [Short descriptive title]
+  description: [Brief summary of the content]
+  tags: [tag1, tag2]
+  ---
+  ```
+
 ## Workflows
 
 Workflows are invoked with `/<workflow-name>`. Each workflow lives under `.agents/workflows/<name>.md`.

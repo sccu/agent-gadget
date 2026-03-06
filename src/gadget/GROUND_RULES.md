@@ -13,10 +13,12 @@ rule → document → code
 ```
 
 - **Rules** (this file) are the upstream source of truth.
-- **Documents** (`AGENTS.md`, `docs/`) are derived from these rules.
+- **Documents** (`AGENTS.md`, `docs/`, including Knowledge Base `docs/kb/`) are derived from these rules.
 - **Code** (`src/`, `tests/`) is derived from the documents.
 
 When a defect is found, the fix should target the **highest upstream layer** responsible, not just patch the code.
+
+- **Project Layout**: The exact directory structure of the project is maintained in `docs/architecture.md`. Any structural changes (adding/removing directories or key files) **MUST** be synchronized with `docs/architecture.md`.
 
 ## 2. Fail-Fast Over Silent Recovery
 
