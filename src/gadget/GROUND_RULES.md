@@ -54,5 +54,5 @@ A `pre-commit` hook runs `pytest` on every commit. All tests must pass before co
 ## 8. Language Policy
 
 To ensure clarity and consistency in human-agent interaction:
-- **English**: All skill definitions (`SKILL.md`), workflow definitions (`workflows/*.md`), and system prompts must be written in English.
-- **Korean**: All primary human-interaction artifacts, including GitHub Issues, `research_report.md`, `design_report.md`, implementation plans, and `review_report.md`, must be written in Korean.
+- **English**: All skill definitions (`SKILL.md`), workflow definitions (`workflows/*.md`), system prompts, and implementation plans must be written in English.
+- **Korean**: All primary human-interaction artifacts, including GitHub Issues, `research_report.md`, `design_report.md`, and `review_report.md`, must be written in Korean.
