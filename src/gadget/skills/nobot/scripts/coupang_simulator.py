@@ -25,63 +25,66 @@ SEARCH_INPUT = "#wa-search-form input.headerSearchKeyword"
 SEARCH_BTN = "#wa-search-form button.headerSearchBtn"
 
 
+async def _navigate_and_check(page) -> None:
+    print(f"[*] Navigating to Coupang…")
+    await page.goto(
+        "https://www.coupang.com",
+        wait_until="commit",
+        timeout=60000,
+    )
+    print("[*] Page committed.")
+
+    wait_s = random.uniform(3, 5)
+    print(f"[*] Waiting {wait_s:.1f}s for Sensor Script…")
+    await asyncio.sleep(wait_s)
+
+    title = await page.title()
+    print(f"[*] Page title: {title}")
+    if _is_blocked(title):
+        raise RuntimeError("Immediate Access Denied.")
+
+
+async def _perform_search(page, interactor: HumanoidInteractor, query: str) -> None:
+    print("[*] Running warm-up…")
+    await interactor.warm_up()
+
+    print(f"[*] Waiting for search input…")
+    await page.wait_for_selector(SEARCH_INPUT, state="visible", timeout=15000)
+    print(f"[*] Typing: {query}")
+    await interactor.human_type(SEARCH_INPUT, query)
+
+    await asyncio.sleep(random.uniform(0.5, 1.5))
+    print("[*] Clicking search…")
+    await interactor.human_click(SEARCH_BTN)
+
+
+async def _verify_results(page, query: str) -> bool:
+    print("[*] Waiting for results…")
+    await asyncio.sleep(5)
+
+    final_url = page.url
+    final_title = await page.title()
+    print(f"[*] Result URL: {final_url}")
+    print(f"[*] Result title: {final_title}")
+    if _is_blocked(final_title):
+        raise RuntimeError(f"Access Denied after search for '{query}'.")
+
+    if "search" in final_url or query.lower() in final_url.lower():
+        print(f"[+] SUCCESS: '{query}' results loaded.")
+        return True
+
+    raise RuntimeError(f"Search failed: URL unchanged after clicking search. Result URL: {final_url}")
+
+
 async def run_search(query: str, launcher: ChromeLauncher) -> bool:
     async with async_playwright() as p:
         browser, page = await launcher.connect(p)
         interactor = HumanoidInteractor(page)
 
         try:
-            # 1. Navigate (use 'commit' for fastest response)
-            print(f"[*] Navigating to Coupang…")
-            await page.goto(
-                "https://www.coupang.com",
-                wait_until="commit",
-                timeout=60000,
-            )
-            print("[*] Page committed.")
-
-            # 2. Wait for Sensor Script
-            wait_s = random.uniform(3, 5)
-            print(f"[*] Waiting {wait_s:.1f}s for Sensor Script…")
-            await asyncio.sleep(wait_s)
-
-            title = await page.title()
-            print(f"[*] Page title: {title}")
-            if _is_blocked(title):
-                raise RuntimeError("Immediate Access Denied.")
-
-            # 3. Warm-up
-            print("[*] Running warm-up…")
-            await interactor.warm_up()
-
-            # 4. Type query — wait for search input to be visible first
-            print(f"[*] Waiting for search input…")
-            await page.wait_for_selector(SEARCH_INPUT, state="visible", timeout=15000)
-            print(f"[*] Typing: {query}")
-            await interactor.human_type(SEARCH_INPUT, query)
-
-            # 5. Click search
-            await asyncio.sleep(random.uniform(0.5, 1.5))
-            print("[*] Clicking search…")
-            await interactor.human_click(SEARCH_BTN)
-
-            # 6. Wait for results (simple sleep — more reliable than load_state for SPAs)
-            print("[*] Waiting for results…")
-            await asyncio.sleep(5)
-
-            final_url = page.url
-            final_title = await page.title()
-            print(f"[*] Result URL: {final_url}")
-            print(f"[*] Result title: {final_title}")
-            if _is_blocked(final_title):
-                raise RuntimeError(f"Access Denied after search for '{query}'.")
-
-            if "search" in final_url or query.lower() in final_url.lower():
-                print(f"[+] SUCCESS: '{query}' results loaded.")
-                return True
-
-            raise RuntimeError(f"Search failed: URL unchanged after clicking search. Result URL: {final_url}")
-
+            await _navigate_and_check(page)
+            await _perform_search(page, interactor, query)
+            return await _verify_results(page, query)
         except Exception as e:
             print(f"[!] Error: {e}")
             raise RuntimeError(f"Unexpected error: {e}") from e

@@ -15,8 +15,8 @@ if [ -z "$BRANCH_NAME" ]; then
 fi
 
 echo "Fetching Issue details from GitHub..."
-ISSUE_TITLE=$(gh issue view "${ISSUE_ID}" --json title -jq .title)
-ISSUE_URL=$(gh issue view "${ISSUE_ID}" --json url -jq .url)
+ISSUE_TITLE=$(gh issue view "${ISSUE_ID}" --json title --jq .title)
+ISSUE_URL=$(gh issue view "${ISSUE_ID}" --json url --jq .url)
 
 if [ -z "${ISSUE_TITLE}" ]; then
   echo "Error: Could not fetch title for Issue #${ISSUE_ID}. Is the issue ID correct?"
