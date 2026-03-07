@@ -2,6 +2,10 @@
 description: Automatically handles a GitHub issue from branch creation to implementation, AI review, and PR creation using the pr-create skill.
 ---
 
+> [!IMPORTANT]
+> **Isolation Rule**: This workflow is designed to execute in a dedicated Git worktree (`.worktrees/`) to prevent interference with the main workspace. This isolation is mandatory for automated issue handling but does not apply to direct prompt-based tasks on the `main` branch.
+
+
 1. Ask the user: "Please provide the GitHub Issue ID or Issue Number you would like me to work on." Wait for their input.
 2. Invoke the `@gh-issue` skill to verify the issue and update its status. If the skill reports a verification failure, halt the workflow and inform the user.
 3. Determine an appropriate branch name containing the issue identifier (e.g., `issue-<id>-brief-description`).
