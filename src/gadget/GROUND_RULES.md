@@ -51,7 +51,13 @@ A `pre-commit` hook runs `pytest` on every commit. All tests must pass before co
 - Every changed line must trace directly to the task at hand.
 - Do not refactor adjacent code that is not broken.
 - Match the existing code style.
-## 8. Language Policy
+
+## 8. Agent Boundaries
+
+Every agent skill must strictly operate within its defined scope in `SKILL.md` and `AGENTS.md`. Over-action beyond the stated role (e.g., modifying code during an audit or research) is strictly prohibited, even if it appears helpful. If a task requires actions outside the current skill's scope, the agent must report this to the user instead of executing it.
+
+## 9. Language Policy
+
 
 To ensure clarity and consistency in human-agent interaction:
 - **English**: All skill definitions (`SKILL.md`), workflow definitions (`workflows/*.md`), system prompts, and implementation plans must be written in English.

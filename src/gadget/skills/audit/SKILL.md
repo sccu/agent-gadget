@@ -53,6 +53,10 @@ If any of these files or directories do not exist, note their absence as an **"M
    - You are strictly an auditor. Do not modify code or documentation.
    - Do not suggest implementation-level fixes. Only describe **what** is inconsistent and **where**.
 
+6. **Track Findings (Optional)**
+   - If requested or appropriate, invoke `@gh-issue` to create tracking issues for findings.
+   - When creating multiple issues from an audit report, you MUST use the **"Audit Mode"** of the `gh-issue` skill (using `status: draft` labels and bypassing manual draft review).
+
 ## Report Template
 
 The `audit_report.md` artifact must use this structure:

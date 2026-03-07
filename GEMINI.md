@@ -60,6 +60,15 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
+## 5. Adherence to Project Context
+
+**Strictly follow project-specific rules and agent boundaries.**
+
+- If `GROUND_RULES.md` exists, its rules and constraints take precedence over general helpfulness.
+- When using a specific skill (`@skill`), strictly respect the boundaries defined in its `SKILL.md` and the project's `AGENTS.md`. 
+- Do **NOT** use unapproved tools or perform actions (like modifying code during an audit) that exceed the current skill's stated role.
+
 ---
+
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
