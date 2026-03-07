@@ -14,6 +14,14 @@ if [ -z "$BRANCH_NAME" ]; then
   exit 1
 fi
 
+# Path verification: Ensure we are in a sub-directory of .worktrees/
+REPO_ROOT=$(git rev-parse --show-toplevel)
+if [[ ! "$REPO_ROOT" =~ /\.worktrees/[^/]+$ ]]; then
+  echo "Error: High-risk execution detected. pr-create.sh must be run from a worktree directory (e.g., .worktrees/issue-id)."
+  echo "Current root: $REPO_ROOT"
+  exit 1
+fi
+
 echo "Fetching Issue details from GitHub..."
 ISSUE_TITLE=$(gh issue view "${ISSUE_ID}" --json title --jq .title)
 ISSUE_URL=$(gh issue view "${ISSUE_ID}" --json url --jq .url)
@@ -24,6 +32,15 @@ if [ -z "${ISSUE_TITLE}" ]; then
 fi
 
 if [ -n "$(git status --porcelain)" ]; then
+  # Check for accidental artifacts in the current status (ignore deletions)
+  REPORTS=$(git status --porcelain | grep -v "^ D" | grep -E "(_report\.md)$" || true)
+  if [ -n "$REPORTS" ]; then
+    echo "Error: Detected reports in the staging area or untracked files:"
+    echo "$REPORTS"
+    echo "Report files MUST NOT be committed to the repository. Please move them to the artifacts directory and remove them from the repository directory."
+    exit 1
+  fi
+
   echo "Committing uncommitted changes..."
   git add .
   git commit -m "${ISSUE_TITLE} (Fix #${ISSUE_ID})"
@@ -39,7 +56,8 @@ echo "Enabling auto-merge..."
 gh pr merge "${PR_URL}" --squash --auto
 
 echo "Changing directory to parent repository..."
-cd ../..
+MAIN_REPO_ROOT=$(dirname $(dirname "$REPO_ROOT"))
+cd "${MAIN_REPO_ROOT}"
 
 echo "Removing worktree and cleaning up branches..."
 git worktree remove ".worktrees/${BRANCH_NAME}" --force
