@@ -48,8 +48,7 @@ async def run_search(query: str, launcher: ChromeLauncher) -> bool:
             title = await page.title()
             print(f"[*] Page title: {title}")
             if _is_blocked(title):
-                print("[!] Immediate Access Denied.")
-                return False
+                raise RuntimeError("Immediate Access Denied.")
 
             # 3. Warm-up
             print("[*] Running warm-up…")
@@ -64,11 +63,7 @@ async def run_search(query: str, launcher: ChromeLauncher) -> bool:
             # 5. Click search
             await asyncio.sleep(random.uniform(0.5, 1.5))
             print("[*] Clicking search…")
-            try:
-                await interactor.human_click(SEARCH_BTN)
-            except Exception as click_err:
-                print(f"[*] Click failed ({click_err}), using Enter key…")
-                await page.keyboard.press("Enter")
+            await interactor.human_click(SEARCH_BTN)
 
             # 6. Wait for results (simple sleep — more reliable than load_state for SPAs)
             print("[*] Waiting for results…")
@@ -79,32 +74,17 @@ async def run_search(query: str, launcher: ChromeLauncher) -> bool:
             print(f"[*] Result URL: {final_url}")
             print(f"[*] Result title: {final_title}")
             if _is_blocked(final_title):
-                print(f"[!] Access Denied after search for '{query}'.")
-                return False
+                raise RuntimeError(f"Access Denied after search for '{query}'.")
 
             if "search" in final_url or query.lower() in final_url.lower():
                 print(f"[+] SUCCESS: '{query}' results loaded.")
                 return True
 
-            # The URL didn't change — click may have missed; try Enter key
-            print("[*] URL unchanged, pressing Enter as fallback…")
-            await page.keyboard.press("Enter")
-            await asyncio.sleep(5)
-
-            final_url = page.url
-            final_title = await page.title()
-            print(f"[*] Fallback URL: {final_url}")
-            print(f"[*] Fallback title: {final_title}")
-            if _is_blocked(final_title):
-                print(f"[!] Access Denied after Enter for '{query}'.")
-                return False
-
-            print(f"[+] SUCCESS: '{query}' results loaded.")
-            return True
+            raise RuntimeError(f"Search failed: URL unchanged after clicking search. Result URL: {final_url}")
 
         except Exception as e:
             print(f"[!] Error: {e}")
-            return False
+            raise RuntimeError(f"Unexpected error: {e}") from e
 
 
 def _is_blocked(title: str) -> bool:
