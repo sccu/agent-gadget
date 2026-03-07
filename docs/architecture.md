@@ -10,9 +10,10 @@ This document describes the high-level architecture of `agent-gadget`.
 agent-gadget/
 ├── GROUND_RULES.md          # Foundational project rules (upstream source of truth)
 ├── AGENTS.md                # Agent skills & workflows spec
-├── GEMINI.md / CLAUDE.md    # LLM behavioral guidelines
+├── GEMINI.md / GEMINI-COMPACT.md / CLAUDE.md    # LLM behavioral guidelines
 ├── README.md                # Getting started & usage overview
 ├── pyproject.toml           # Build config, dependencies, CLI entry point
+├── .worktrees/              # Git worktrees for isolated issue handling
 ├── docs/                    # Detailed documentation
 │   ├── architecture.md      # (this file)
 │   └── kb/                  # Knowledge Base for troubleshooting and tips
@@ -21,8 +22,10 @@ agent-gadget/
 │   ├── cli.py               # CLI entry point (`gadget init`)
 │   ├── skills/              # Bundled skill definitions (copied on `gadget init`)
 │   │   ├── audit/SKILL.md
-│   │   ├── issue/SKILL.md
+│   │   ├── design/SKILL.md
+│   │   ├── gh-issue/SKILL.md
 │   │   ├── nobot/SKILL.md
+│   │   ├── pr-create/SKILL.md
 │   │   ├── research/SKILL.md
 │   │   └── review/SKILL.md
 │   └── workflows/           # Bundled workflow definitions

@@ -12,9 +12,11 @@ Skills are invoked with `@<skill-name>`. Each skill lives under `.agents/skills/
 |-------|---------|---------|
 | `gh-issue` | `@gh-issue <prompt>` | Generates a GitHub Issue via `gh` CLI |
 | `research` | `@research` | Deep codebase analysis; outputs `research_report.md` artifact |
+| `design` | `@design` | Detailed architecture design; outputs `design_report.md` artifact |
 | `review` | `@review` | Code review & QA; outputs `review_report.md` artifact |
 | `audit` | `@audit` | Compares docs vs. code; outputs `audit_report.md` artifact |
 | `nobot` | `@nobot` | Human-like browser automation via Real Chrome CDP |
+| `pr-create` | `@pr-create <issue-id>` | Creates a PR, auto-merges it, and cleans up workspace |
 
 ### Skill Authoring Rules
 
