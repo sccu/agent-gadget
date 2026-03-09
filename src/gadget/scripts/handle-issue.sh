@@ -17,7 +17,8 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$PAT
 
 # Move to the project root directory (assuming script is in src/gadget/scripts/)
 # Adjust if the script is called from elsewhere, but usually cron will be set to the project root.
-PROJECT_ROOT="$(cd "$(dirname "$0")/../../.." && pwd)"
+SCRIPT_DIR="$(cd -P "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 cd "$PROJECT_ROOT"
 
 # Load environment variables if .env exists
