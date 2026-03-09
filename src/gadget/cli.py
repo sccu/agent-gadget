@@ -91,7 +91,7 @@ def init_command(target_dir: str, force: bool = False) -> None:
     base_src_dir = os.path.dirname(__file__)
     base_target_dir = os.path.join(target_dir, ".agents")
     
-    directories_to_install = ["skills", "workflows"]
+    directories_to_install = ["skills", "workflows", "scripts"]
     
     for dir_name in directories_to_install:
         src_dir = os.path.join(base_src_dir, dir_name)
