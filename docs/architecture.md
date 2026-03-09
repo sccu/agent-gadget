@@ -20,12 +20,22 @@ agent-gadget/
 ├── src/gadget/
 │   ├── __init__.py
 │   ├── cli.py               # CLI entry point (`gadget init`)
+│   ├── scripts/             # Internal helper scripts
+│   │   └── handle-issue.sh
 │   ├── skills/              # Bundled skill definitions (copied on `gadget init`)
 │   │   ├── audit/SKILL.md
 │   │   ├── design/SKILL.md
 │   │   ├── gh-issue/SKILL.md
-│   │   ├── nobot/SKILL.md
-│   │   ├── pr-create/SKILL.md
+│   │   ├── nobot/
+│   │   │   ├── SKILL.md
+│   │   │   └── scripts/
+│   │   │       ├── chrome_launcher.py
+│   │   │       ├── coupang_simulator.py
+│   │   │       └── humanoid_interactor.py
+│   │   ├── pr-create/
+│   │   │   ├── SKILL.md
+│   │   │   └── scripts/
+│   │   │       └── pr-create.sh
 │   │   ├── research/SKILL.md
 │   │   └── review/SKILL.md
 │   └── workflows/           # Bundled workflow definitions
