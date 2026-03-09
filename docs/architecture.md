@@ -15,7 +15,17 @@ agent-gadget/
 ├── pyproject.toml           # Build config, dependencies, CLI entry point
 ├── .worktrees/              # Git worktrees for isolated issue handling
 ├── docs/                    # Detailed documentation
+│   ├── PRD.md               # Product Requirements Document
 │   ├── architecture.md      # (this file)
+│   ├── features/            # Feature-specific detailed specifications
+│   │   ├── audit.md
+│   │   ├── design.md
+│   │   ├── gh-issue.md
+│   │   ├── handle-issue.md
+│   │   ├── nobot.md
+│   │   ├── pr-create.md
+│   │   ├── research.md
+│   │   └── review.md
 │   └── kb/                  # Knowledge Base for troubleshooting and tips
 ├── src/gadget/
 │   ├── __init__.py
