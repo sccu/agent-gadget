@@ -8,8 +8,8 @@ This document describes the high-level architecture of `agent-gadget`.
 
 ```
 agent-gadget/
-├── GROUND_RULES.md          # Foundational project rules (upstream source of truth)
-├── AGENTS.md                # Agent skills & workflows spec
+├── GROUND_RULES.md          # Foundational project rules (Symlink to src/gadget/GROUND_RULES.md)
+├── AGENTS.md                # Agent skills & workflows spec (Symlink to src/gadget/AGENTS.md)
 ├── GEMINI.md / GEMINI-COMPACT.md / CLAUDE.md    # LLM behavioral guidelines
 ├── README.md                # Getting started & usage overview
 ├── pyproject.toml           # Build config, dependencies, CLI entry point
@@ -20,6 +20,8 @@ agent-gadget/
 ├── src/gadget/
 │   ├── __init__.py
 │   ├── cli.py               # CLI entry point (`gadget init`)
+│   ├── GROUND_RULES.md      # Original foundational rules (copied on `gadget init`)
+│   ├── AGENTS.md            # Original agents spec (copied on `gadget init`)
 │   ├── scripts/             # Internal helper scripts
 │   │   └── handle-issue.sh
 │   ├── skills/              # Bundled skill definitions (copied on `gadget init`)
