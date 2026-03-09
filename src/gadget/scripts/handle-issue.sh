@@ -44,7 +44,7 @@ ISSUE_NUMBER=$(echo "$ISSUE_JSON" | jq -r '.[0].number // empty')
 # --- Execution ---
 if [ -n "$ISSUE_NUMBER" ]; then
   echo "Found issue #$ISSUE_NUMBER. Starting automated resolution..."
-  gemini --model gemini-3.1-pro-preview -y "/handle-issue #$ISSUE_NUMBER" "/quit"
+  gemini --model gemini-3.1-pro-preview -y -p "/handle-issue #$ISSUE_NUMBER"
 else
   echo "No confirmed, non-in-progress issues found. Nothing to do."
 fi
