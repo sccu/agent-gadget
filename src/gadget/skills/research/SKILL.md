@@ -22,7 +22,7 @@ Follow these instructions exactly:
    - Use words like: **"deeply", "in great detail", "intricacies", "go through everything"** to guide your analysis.
 
 2. **Generate a Persistent Research Artifact**
-   - Create a markdown file named **research_report.md**.
+   - Create a markdown file named **tmp/research_report.md**.
    - **Language**: This artifact MUST be written in **Korean**.
    - Include:
      - Section headers for big logical units
@@ -53,7 +53,7 @@ Follow these instructions exactly:
 7. **Post to GitHub Issue (if issue number is provided)**
    - If the request includes a GitHub issue number, add the full contents of **research_report.md** as a comment on that issue using:
      ```
-     gh issue comment <issue-number> -F <path-to-research_report.md>
+     gh issue comment <issue-number> -F tmp/research_report.md
      ```
    - Do this **after** the research_report.md file is finalized.
 
