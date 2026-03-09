@@ -45,7 +45,7 @@ If any of these files or directories do not exist, note their absence as an **"M
    | ⚪ Missing Doc | A document listed in scope does not exist |
 
 4. **Write the Report**
-   - Create an artifact named **`audit_report.md`**.
+   - Create an artifact named **`tmp/audit_report.md`**.
    - The report MUST follow the structure in the **Report Template** section below.
    - Do NOT summarize findings in chat. The artifact is the sole deliverable.
 

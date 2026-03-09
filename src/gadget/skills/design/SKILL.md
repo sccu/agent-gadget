@@ -21,7 +21,7 @@ Follow these instructions exactly:
    - Understand the current architecture and identify the exact components, APIs, classes, or functions that require modification or creation.
 
 2. **Generate a Detailed Design Artifact**
-   - Create a markdown file named **design_report.md**.
+   - Create a markdown file named **tmp/design_report.md**.
    - **Language**: This artifact MUST be written in **Korean**.
    - Include:
      - **Architecture Overview**: How the new changes fit into the existing system.
@@ -45,8 +45,7 @@ Follow these instructions exactly:
 5. **Post to GitHub Issue (if issue number is provided)**
    - If the request includes a GitHub issue number, add the full contents of **design_report.md** as a comment on that issue using:
      ```
-     gh issue comment <issue-number> -F <path-to-design_report.md>
+     gh issue comment <issue-number> -F tmp/design_report.md
      ```
-   - Do this **after** the design_report.md file is finalized.
-
+     - Do this **after** the design_report.md file is finalized.
 When you're done, output the full contents of the `design_report.md` file.
