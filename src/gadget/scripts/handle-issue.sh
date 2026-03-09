@@ -35,7 +35,7 @@ command -v gemini >/dev/null 2>&1 || { echo >&2 "Error: 'gemini' CLI is required
 
 # --- Issue Discovery ---
 # Fetch the oldest confirmed issue that is not yet in-progress
-ISSUE_JSON=$(gh issue list --label "status: confirmed" --exclude-label "status: in-progress" --sort "created" --direction "asc" --limit 1 --json number)
+ISSUE_JSON=$(gh issue list --search 'label:"status: confirmed" -label:"status: in-progress" sort:created-asc' --limit 1 --json number)
 
 # Extract issue number using jq. If empty, it returns an empty string.
 ISSUE_NUMBER=$(echo "$ISSUE_JSON" | jq -r '.[0].number // empty')
@@ -43,7 +43,7 @@ ISSUE_NUMBER=$(echo "$ISSUE_JSON" | jq -r '.[0].number // empty')
 # --- Execution ---
 if [ -n "$ISSUE_NUMBER" ]; then
   echo "Found issue #$ISSUE_NUMBER. Starting automated resolution..."
-  gemini "/handle-issue #$ISSUE_NUMBER"
+  gemini -y "/handle-issue #$ISSUE_NUMBER"
 else
   echo "No confirmed, non-in-progress issues found. Nothing to do."
 fi
