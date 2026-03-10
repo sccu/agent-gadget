@@ -98,7 +98,7 @@ def init_command(target_dir: str, force: bool = False) -> None:
         tgt_dir = os.path.join(base_target_dir, dir_name)
         install_items(src_dir, tgt_dir, force, dir_name)
         
-    files_to_install = ["GROUND_RULES.md", "AGENTS.md"]
+    files_to_install = ["GROUND_RULES.md", "AGENTS.md", "GEMINI.md"]
     for file_name in files_to_install:
         src_path = os.path.join(base_src_dir, file_name)
         install_file(src_path, target_dir, file_name, force)

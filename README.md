@@ -34,7 +34,7 @@ pip install -e ".[dev]"
 > ```
 
 ### Basic Usage
-After installation, you can run the initialization command to set up the agent environment:
+After installation, you can run the initialization command to set up the agent environment. This will install the necessary agent skills, workflows, and core configuration files (`GEMINI.md`, `GROUND_RULES.md`, `AGENTS.md`) into your project:
 
 ```bash
 gadget init
