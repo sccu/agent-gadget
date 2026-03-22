@@ -10,18 +10,18 @@ description: Automatically handles a GitHub issue from branch creation to implem
 
 **Workflow Steps:**
 
-0. **Workflow Meta-Planning (MANDATORY)**: Before taking any action, explicitly list all subsequent steps (1-12) as a checklist. For each step, identify the specific skills to be invoked, artifacts to be generated, and success criteria. This "self-suggestion" ensures that critical steps like Isolation (Step 4), Mandatory Design (Step 6), and Iterative Review (Step 10) are never bypassed.
-1. **Initialization**: Ask the user: "Please provide the GitHub Issue ID or Issue Number you would like me to work on." Wait for their input.
-2. **Validation**: Invoke the `@gh-issue` skill to verify the issue and update its status. If verification fails, halt the workflow and inform the user immediately.
+0. **Workflow Meta-Planning (MANDATORY)**: Before taking any action, list steps 1-12 as a checklist. Identify the skills to be invoked, artifacts to be generated, and success criteria for each step.
+1. **Initialization**: Ask the user for the GitHub Issue ID or Issue Number and wait for input.
+2. **Validation**: Invoke the `@gh-issue` skill to verify the issue and update its status. If verification fails, halt the workflow and inform the user.
 3. **Branch Setup**: Determine an appropriate branch name (e.g., `issue-<id>-brief-description`).
-4. **Isolation Checkpoint (CRITICAL)**: Run the following command to isolate your work: 
+4. **Isolation Checkpoint (CRITICAL)**: Run the following command:
    `git fetch origin main && git worktree add .worktrees/<branch-name> -b <branch-name> origin/main && cd .worktrees/<branch-name>`
-   *You MUST verify you are successfully inside the `.worktrees/` directory before proceeding.*
-5. **Research (Optional but Recommended)**: If the codebase lacks context or previous attempts failed, invoke the `@research` skill with the issue number.
-6. **Design (MANDATORY)**: Invoke the `@design` skill with the issue number. Do NOT skip this step under any circumstances.
-7. **Planning**: Based on `tmp/research_report.md` (if available), `tmp/design_report.md`, and the issue content, write a detailed implementation plan.
-8. **Implementation**: Implement the code changes exactly according to the plan. *Reminder: Ensure you are still working within the isolated worktree.*
-9. **Review**: Once implemented, invoke the `@review` skill with the issue number to analyze your changes.
-10. **Iterative Refinement (LOOP)**: Read the `tmp/review_report.md` artifact. If there are issues or items requiring review, refactor the code and repeat step 9 (`@review`). You MUST loop this process until the review artifact explicitly states there are **no issues and no items requiring user review**.
-11. **PR Creation**: Only when the review passes completely, invoke the `@pr-create` skill with the issue ID to push the branch, create a PR, and clean up.
-12. **Final Output**: Present the final results to the user, strictly including the Issue URL and Pull Request URL outputted by the `@pr-create` skill.
+   Verify you are inside the `.worktrees/` directory before proceeding.
+5. **Research (Optional)**: Invoke the `@research` skill with the issue number if context is required.
+6. **Design (MANDATORY)**: Invoke the `@design` skill with the issue number.
+7. **Planning**: Write a detailed implementation plan based on `tmp/research_report.md` (if available) and `tmp/design_report.md`.
+8. **Implementation**: Implement the code changes exactly according to the plan within the isolated worktree.
+9. **Review**: Invoke the `@review` skill with the issue number to analyze the changes.
+10. **Iterative Refinement (LOOP)**: Read `tmp/review_report.md`. If issues exist, refactor and repeat step 9 until the artifact states there are no further issues or review items.
+11. **PR Creation**: Invoke the `@pr-create` skill with the issue ID to push the branch, create a PR, and clean up.
+12. **Final Output**: Present the final results including the Issue URL and Pull Request URL outputted by `@pr-create`.
