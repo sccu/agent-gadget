@@ -10,6 +10,7 @@ description: Automatically handles a GitHub issue from branch creation to implem
 
 **Workflow Steps:**
 
+0. **Workflow Meta-Planning (MANDATORY)**: Before taking any action, explicitly list all subsequent steps (1-12) as a checklist. For each step, identify the specific skills to be invoked, artifacts to be generated, and success criteria. This "self-suggestion" ensures that critical steps like Isolation (Step 4), Mandatory Design (Step 6), and Iterative Review (Step 10) are never bypassed.
 1. **Initialization**: Ask the user: "Please provide the GitHub Issue ID or Issue Number you would like me to work on." Wait for their input.
 2. **Validation**: Invoke the `@gh-issue` skill to verify the issue and update its status. If verification fails, halt the workflow and inform the user immediately.
 3. **Branch Setup**: Determine an appropriate branch name (e.g., `issue-<id>-brief-description`).

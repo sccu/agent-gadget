@@ -8,6 +8,7 @@
 - 보통 스케줄러(cron) 등에 의해 백그라운드 스크립트(`scripts/handle-issue.sh`)로 자동 실행되거나 CLI를 통해 명시적으로 호출됩니다.
 
 ## 3. 주요 동작 방식 및 내부 로직
+0. **워크플로우 메타 플래닝**: 작업 시작 전, 전체 단계(1~12)에 대한 체크리스트를 작성하여 필수 단계(격리, 설계, 반복 리뷰 등)가 누락되지 않도록 자기암시(Self-Suggestion)를 수행합니다.
 1. **이슈 검증**: 대상 이슈가 `status: confirmed` 상태인지, 그리고 `status: in-progress`가 아닌지 확인합니다.
 2. **작업 환경 격리**: `git worktree add .worktrees/<branch-name>`을 통해 메인 환경과 분리된 독립적인 작업 트리를 생성합니다.
 3. **분석 및 설계**: 필요 시 `@research`를 호출하고, 필수적으로 `@design` 스킬을 호출하여 설계안(`design_report.md`)을 산출합니다.
